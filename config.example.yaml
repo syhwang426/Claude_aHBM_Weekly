@@ -1,0 +1,47 @@
+organization:
+  name: AGI Computing Lab
+  group: STG
+  timezone: America/Los_Angeles
+reporting:
+  meeting_day: monday
+  meeting_time: "09:00"
+  previous_week_start: monday
+  reporting_cutoff: "08:00"
+  scope_baseline: previous_monday
+gitlab:
+  base_url: https://gitlab.example.internal
+  token_env: GITLAB_READ_TOKEN
+  per_page: 100
+  projects:
+    - id: 101
+      component: memory_sw
+      integration_branch: main
+    - id: 102
+      component: platform
+      integration_branch: main
+jira:
+  base_url: https://jira.example.internal
+  token_env: JIRA_READ_TOKEN
+  project_keys: [STG]
+  issue_key_pattern: '[A-Z][A-Z0-9]+-[0-9]+'
+  baseline_source: approved_weekly_commitments
+e2e:
+  gitlab_project_id: 103
+  branch: main
+  pipeline_source: gitlab_ci
+  manifest_job: generate_manifest
+  release_job: publish_release
+  required_jobs: [integration_test, regression_test]
+  artifact_path: release/manifest.json
+  require_component_sha: true
+  require_artifact_digest: true
+  require_release_acceptance: true
+metrics:
+  weights: approved_scope_points
+  fallback: equal_planned_deliverables
+blockers:
+  warning_after_days: 3
+  critical_after_days: 5
+security:
+  read_only: true
+  tokens_from_environment_only: true
