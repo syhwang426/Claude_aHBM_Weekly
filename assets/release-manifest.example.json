@@ -1,0 +1,21 @@
+{
+  "release_id": "R2026.10.16",
+  "pipeline_id": 12345,
+  "release_status": "accepted",
+  "components": [
+    {
+      "name": "memory_sw",
+      "gitlab_project_id": 101,
+      "commit_sha": "FULL_40_CHARACTER_SHA_PLACEHOLDER",
+      "artifact_version": "1.2.0",
+      "artifact_digest": "sha256:EXAMPLE_ONLY",
+      "jira_issues": [
+        "STG-123"
+      ],
+      "validation": {
+        "integration_test": "passed",
+        "regression_test": "passed"
+      }
+    }
+  ]
+}
